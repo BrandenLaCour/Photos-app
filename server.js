@@ -10,12 +10,17 @@ const PORT = process.env.PORT
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static('public'))
 
+const authController = require('./controllers/authController')
+app.use('/auth', authController)
+
 
 app.get('/', (req, res) => {
-	res.send('At home');
+	res.render('home.ejs')
 })
 
-
+app.get('*', (req, res) => {
+	res.status(404).send('404 page not found')
+})
 
 
 
