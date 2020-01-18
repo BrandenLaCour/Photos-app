@@ -288,7 +288,7 @@ When you think you have a handle on it, figure out ways DRY up your app by using
 
 ## Comments
 
-Research [Mongoose Subdocuments](https://mongoosejs.com/docs/subdocs.html), and use them to implement comments on posts.  Your `Post` model should contain an array of `Comment` subdocuments. Think: why might you use subdocuments vs just storing comments with a reference to the post they're related to?  How might subdocuments vs reference make certain things easier and certain things more difficult. 
+Research [Mongoose Subdocuments](https://mongoosejs.com/docs/subdocs.html), and use them to implement comments on posts.  Your `Post` model should contain an array of `Comment` subdocuments. Think: why might you use subdocuments vs just storing comments with a reference to the post they're related to?  How might subdocuments vs references make certain things easier and certain things more difficult?
 
 ## Likes
 
