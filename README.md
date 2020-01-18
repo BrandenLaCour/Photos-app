@@ -29,7 +29,7 @@ The site should have a nav.  As you add functionality, add whatever links in the
 
 ## Start off with Models: `Photo` and `User`.
 
-When building a complex application, once you have a clear idea of what you want to build, **always** start with thinking about the **data** in your app and how you will model and store it. 
+When building a complex application, once you have a clear idea of what you want to build, **always** start with thinking about the **data** in your app, how you will model it, and how those models are related to each other.
 
 When creating a schema for `User`, think about validations. The username and password should _definitely_ be required.  You could have other fields too if you like, such as first name and last name and email and hometown, etc.  
 
