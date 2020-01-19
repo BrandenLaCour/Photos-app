@@ -13,7 +13,7 @@ router.post('/register', async (req, res, next) => {
 
 	try {
 		const createdUser = await User.create(req.body)
-		req.session.message = 'thanks for creating an account!'
+		req.session.message = 'Thanks for creating an account!'
 		res.redirect('/')
 	} catch(err) {
 		next(err)

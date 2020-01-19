@@ -8,18 +8,23 @@ const session = require('express-session')
 //middleware
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static('public'))
-
-const authController = require('./controllers/authController')
-app.use('/auth', authController)
 app.use(session({
 	secret: process.env.SECRET_KEY,
 	resave: false,
 	saveUninitialized: false
 }))
 
+
+//controllers
+const authController = require('./controllers/authController')
+app.use('/auth', authController)
+
 app.get('/', (req, res) => {
 	
-	res.render('home.ejs')
+	let message = req.session.message
+	if (!message) message = ''
+
+	res.render('home.ejs', {message: message})
 })
 
 app.get('*', (req, res) => {
