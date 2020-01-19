@@ -22,8 +22,7 @@ app.use('/auth', authController)
 app.get('/', (req, res) => {
 	
 	let message = req.session.message
-	if (!message) message = ''
-
+	req.session.message = ''
 	res.render('home.ejs', {message: message})
 })
 
