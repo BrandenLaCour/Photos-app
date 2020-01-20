@@ -1,11 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../models/user')
 
-
-router.get('/', (req, res) => {
+router.get('/', async (req, res, next) => {
 	const message = req.session.message
 	req.session.message = ''
-	res.render('users/index.ejs', {message: message})
+
+	try {
+		console.log('ran users find');
+		const usersFound = await User.find({})
+		res.render('users/index.ejs', {users: usersFound, message: message})
+	}
+	catch(err){
+		next(err)
+
+	}
+	
 })
 
 
