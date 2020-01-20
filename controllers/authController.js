@@ -33,7 +33,15 @@ router.post('/register', async (req, res, next) => {
 
 router.get('/login', async (req, res) => {
     const message = req.session.message
-    res.render('auth/login.ejs', { message: message })
+    if (req.session.username){
+    	req.session.message = 'Already Logged In!'
+    	res.redirect('/')
+    }
+    else {
+    	res.render('auth/login.ejs', { message: message })
+
+    }
+    
 })
 
 
@@ -79,7 +87,7 @@ router.post('/login', async (req, res, next) => {
 router.get('/logout', async (req, res) => {
 	
 	await req.session.destroy()
-	res.redirect('/login')
+	res.redirect('/auth/login')
 })
 
 

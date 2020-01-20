@@ -7,8 +7,12 @@ const mongoose = require('mongoose')
 const photoSchema = new mongoose.Schema({
 
 	title: String,
-	url: String,
-	date: Date()
+	url: {
+		type: String,
+		required: true
+	}
+	date: Date(),
+	desc: String
 
 })
 

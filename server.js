@@ -18,6 +18,8 @@ app.use(session({
 //controllers
 const authController = require('./controllers/authController')
 app.use('/auth', authController)
+const photoController = require('./controllers/photoController')
+app.use('/photos', photoController)
 
 app.get('/', (req, res) => {
 	
