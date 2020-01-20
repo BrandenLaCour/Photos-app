@@ -6,9 +6,17 @@ const Photo = require('../models/photo')
 
 
 router.get('/new', (req, res) => {
-	const message = req.session.message
+	let message = req.session.message
 	req.session.message = ''
-	res.render('photos/new.ejs', {message: message})
+
+	if (req.session.username){
+		res.render('photos/new.ejs', {message: message})
+	}
+	else {
+		req.session.message = 'You must be logged in to view that page'
+		res.redirect('/auth/login')
+	}
+	
 })
 
 router.post('/', async (req, res, next) => {

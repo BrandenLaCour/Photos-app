@@ -33,11 +33,13 @@ router.post('/register', async (req, res, next) => {
 
 router.get('/login', async (req, res) => {
     const message = req.session.message
+    req.session.message = ''
     if (req.session.username){
     	req.session.message = 'Already Logged In!'
     	res.redirect('/')
     }
     else {
+
     	res.render('auth/login.ejs', { message: message })
 
     }
