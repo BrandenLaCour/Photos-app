@@ -21,7 +21,7 @@ body {
 
 #shown-photo {
 
-	width: 50vw;
+	width: 40vw;
 }
 
 #show-photo-container {
@@ -56,4 +56,8 @@ li {
 	list-style-type: none;
 	margin-top: 5px;
 	font-size: 2em;
+}
+
+#user-info {
+	font-size: .8em;
 }

@@ -1,5 +1,5 @@
 <%-include('../partials/header.ejs')%>
-<h1>Photos from <%=username%></h1>
+<h1>Photos from <%=user.username%></h1>
 
 <div class='photo-container'>
 <% photos.forEach( photo => {%>
@@ -21,7 +21,11 @@
 
 
 </div>
-
+<ul id='user-info'>
+	<li><%=user.name%></li>
+	<li ><%=user.hometown%></li>
+	<li><%=user.email%></li>
+</ul>
 <script type="text/javascript">
 
 

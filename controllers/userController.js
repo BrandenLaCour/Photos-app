@@ -25,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		//find user, then access photos array
 		const foundUser = await User.findById(req.params.id).populate('photos')
-		res.render('users/show.ejs', {username: foundUser.username, photos: foundUser.photos})
+		res.render('users/show.ejs', {user: foundUser, photos: foundUser.photos})
 	}
 	catch(err){
 		next(err)
