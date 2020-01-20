@@ -1,0 +1,30 @@
+<%-include('../partials/header.ejs')%>
+<h1>Photos from <%=username%></h1>
+
+<div class='photo-container'>
+<% photos.forEach( photo => {%>
+
+<a href="/photos/<%=photo._id%>">
+<div class="card m-4" style="width: 18rem;">
+  <img src="<%=photo.url%>" class="card-img-top" alt="...">
+  <div class="card-body">
+  	  <h5 class="card-title">Title: <%=photo.title%></h5>
+    <p class="card-text"> Date: <%=photo.date.toLocaleString()%></p>
+    User: <%=photo.user%>
+  </div>
+</div>
+</a>
+
+<%})%>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+
+
+</script>
+
+<%-include('../partials/footer.ejs')%>

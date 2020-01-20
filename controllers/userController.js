@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 
+//index page
 router.get('/', async (req, res, next) => {
 	const message = req.session.message
 	req.session.message = ''
@@ -18,7 +19,19 @@ router.get('/', async (req, res, next) => {
 	
 })
 
+//show page
+router.get('/:id', async (req, res, next) => {
+	
+	try {
+		//find user, then access photos array
+		const foundUser = await User.findById(req.params.id).populate('photos')
+		res.render('users/show.ejs', {username: foundUser.username, photos: foundUser.photos})
+	}
+	catch(err){
+		next(err)
 
+	}
+})
 
 
 
