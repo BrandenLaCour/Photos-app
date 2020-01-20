@@ -4,7 +4,7 @@ const Photo = require('../models/photo')
 const User = require('../models/user')
 
 
-
+//new route
 router.get('/new', (req, res) => {
 	let message = req.session.message
 	req.session.message = ''
@@ -19,6 +19,7 @@ router.get('/new', (req, res) => {
 	
 })
 
+//create route
 router.post('/', async (req, res, next) => {
 	
 	try {
@@ -44,14 +45,15 @@ router.post('/', async (req, res, next) => {
 })
 
 
-
+//index route
 router.get('/', async (req, res, next) => {
-	
+	const message = req.session.message
+	req.session.message = ''
 	const foundPhotos = await Photo.find({})
-	res.render('photos/index.ejs',{photos: foundPhotos} )
+	res.render('photos/index.ejs',{photos: foundPhotos, message: message} )
 })
 
-
+//show route
 router.get('/:id', async (req, res, next) => {
 	
 	const foundPhoto = await Photo.findById(req.params.id)
@@ -59,6 +61,54 @@ router.get('/:id', async (req, res, next) => {
 })
 
 
+//edit route
+
+router.get('/:id/edit', async (req, res, next) => {
+	const message = req.session.message
+	req.session.message = ''
+
+	//find photo to edit
+	try {
+		
+		const foundPhoto = await Photo.findById(req.params.id)
+		res.render('photos/edit.ejs', {photo: foundPhoto, message: message})
+	}
+	catch(err){
+		next(err)
+	}
+
+	
+
+})
+
+
+//update route
+router.put('/:id', async (req, res, next) => {
+	
+	try {
+		const updatedPhoto = await Photo.update({_id: req.params.id}, req.body, {new: true})
+		res.redirect(`/photos/${req.params.id}`)
+	}
+	catch(err){
+
+		next(err)
+	}
+})
+
+//delete route
+router.delete('/:id', async (req, res, next) => {
+	
+	try {
+
+		const deletedPhoto = await Photo.findByIdAndRemove(req.params.id)
+		req.session.message = 'Photo deleted successfully'
+		res.redirect('/photos')
+	}
+	catch(err){
+
+
+	}
+})
 
 
 

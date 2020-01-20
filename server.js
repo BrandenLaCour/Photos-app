@@ -5,6 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT
 const session = require('express-session')
+const methodOverride = require('method-override')
 //middleware
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static('public'))
@@ -13,7 +14,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }))
-
+app.use(methodOverride('_method'))
 
 //controllers
 const authController = require('./controllers/authController')
