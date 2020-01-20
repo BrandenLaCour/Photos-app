@@ -21,6 +21,8 @@ const authController = require('./controllers/authController')
 app.use('/auth', authController)
 const photoController = require('./controllers/photoController')
 app.use('/photos', photoController)
+const userController = require('./controllers/userController')
+app.use('/users', userController)
 
 app.get('/', (req, res) => {
 	
