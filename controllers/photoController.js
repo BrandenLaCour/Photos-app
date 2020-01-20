@@ -52,7 +52,11 @@ router.get('/', async (req, res, next) => {
 })
 
 
-
+router.get('/:id', async (req, res, next) => {
+	
+	const foundPhoto = await Photo.findById(req.params.id)
+	res.render('photos/show.ejs', { photo: foundPhoto})
+})
 
 
 

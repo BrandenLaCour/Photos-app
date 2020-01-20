@@ -1,0 +1,47 @@
+<%-include('../partials/header.ejs')%>
+<h1>Photos</h1>
+
+<div id='show-photo-container'>
+
+	<img id='shown-photo' src="<%=photo.url%>">
+	
+
+</div>
+<div id='caption-container'>
+	<div class = 'container'>
+		<div class="row justify-content-center">
+			<div class="col-2 mt-4 title">
+					<%=photo.title%>
+			</div>
+	
+		</div>
+		<div class="row justify-content-center">
+			<div class="<%=photo.desc.length > 40 ? 'col-5' : 'col-2'%> mt-3">
+					<%=photo.desc%></strong>
+			</div>
+	
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-3 mt-3">
+					User: <%=photo.user%>
+			</div>
+			<div class="col-3 mt-3">
+					Date: <%=photo.date.toLocaleString()%>
+			</div>
+	
+		</div>
+
+	</div>
+	
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+</script>
+
+<%-include('../partials/footer.ejs')%>

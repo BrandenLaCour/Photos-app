@@ -1,9 +1,48 @@
 body {
 	background-color: lightblue;
 	margin: 10px 10px;
+	font-family: 'Bangers', cursive;
+	font-family: 'Alata', sans-serif;
 }
 
 .photo-container {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.card {
+	transition: all .3s ease-in-out;
+}
+
+.card:hover {
+
+	transform: scale(1.1)
+}
+
+#shown-photo {
+
+	width: 50vw;
+}
+
+#show-photo-container {
+	display: flex;
+	justify-content: center
+}
+
+
+#caption-container {
+	display: flex;
+	justify-content: center
+}
+
+
+.photo-container a {
+	color: black;
+	text-decoration: none
+
+}
+
+.title {
+	font-size: 1.7em;
+	font-weight: 1.2em;
 }
