@@ -10,8 +10,11 @@ const photoSchema = new mongoose.Schema({
 	url: {
 		type: String,
 		required: true
-	}
-	date: Date(),
+	},
+	date: {
+		type: Date,
+		default: Date.now
+	},
 	desc: String
 
 })

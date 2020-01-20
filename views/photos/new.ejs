@@ -29,6 +29,12 @@
     const requiredText = $('<small>Url is Required!</small>').css({'color': 'red'})
     $('.url').append(requiredText)
   }
+  else if (!url.includes('www')){
+
+    event.preventDefault()
+    const requiredText = $('<small>Proper Url format is required!</small>').css({'color': 'red'})
+    $('.url').append(requiredText)
+  }
 
 })  
 
