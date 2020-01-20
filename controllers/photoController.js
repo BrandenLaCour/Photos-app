@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Photo = require('../models/photo')
-
+const User = require('../models/user')
 
 
 
@@ -23,6 +23,11 @@ router.post('/', async (req, res, next) => {
 	
 	try {
 		const createdPhoto = await Photo.create(req.body)
+		//find user with session, update user with new photo to array
+		const foundUser = await User.findById(req.session.userId)
+		foundUser.photos.push(createdPhoto._id)
+		//get user, push photo into its array
+		const updateResult = await User.update({_id: req.session.userId}, foundUser, {new: true})
 		req.session.message = 'Photo Successfully Created'
 		res.redirect('/')
 
