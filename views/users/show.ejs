@@ -25,10 +25,10 @@
 	<li><%=user.name%></li>
 	<li ><%=user.hometown%></li>
 	<li><%=user.email%></li>
+	<li><%if (user.username === username) {%>
+<form method="POST" action="/users/<%=user._id%>?_method=DELETE"><button class='btn btn-danger'>Delete Account</button></form>
+<%}%></li>
 </ul>
-<script type="text/javascript">
 
-
-</script>
 
 <%-include('../partials/footer.ejs')%>
