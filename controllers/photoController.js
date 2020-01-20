@@ -22,6 +22,10 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res, next) => {
 	
 	try {
+		
+		const photoInfo = req.body
+		photoInfo.user = req.session.username
+		//add the user to the new photo
 		const createdPhoto = await Photo.create(req.body)
 		//find user with session, update user with new photo to array
 		const foundUser = await User.findById(req.session.userId)
@@ -41,7 +45,11 @@ router.post('/', async (req, res, next) => {
 
 
 
-
+router.get('/', async (req, res, next) => {
+	
+	const foundPhotos = await Photo.find({})
+	res.render('photos/index.ejs',{photos: foundPhotos} )
+})
 
 
 

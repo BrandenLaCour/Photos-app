@@ -15,7 +15,11 @@ const photoSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-	desc: String
+	desc: String,
+	user: {
+		type: String,
+		required: true
+	}
 
 })
 
