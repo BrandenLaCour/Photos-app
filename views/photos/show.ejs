@@ -31,14 +31,18 @@
 	
 		</div>
 
-			<div class="row justify-content-center">
-			<div class="col-2 mt-4">
+		<div class="row justify-content-center">
+			<%if (photo.user === user) {%>
+				
+				<div class="col-2 mt-4">
 					<form method="POST" action="/photos/<%=photo._id%>?_method=DELETE"><button class='btn btn-danger'>Delete Photo</button></form>
 			</div>
 			<div class="col-2 mt-4">
 					<form method="GET" action="/photos/<%=photo._id%>/edit"><button class="btn btn-success">Edit Photo</button></form>
 			</div>
-	
+
+
+			<%}%>
 		</div>
 
 	</div>

@@ -57,7 +57,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	
 	const foundPhoto = await Photo.findById(req.params.id)
-	res.render('photos/show.ejs', { photo: foundPhoto})
+	res.render('photos/show.ejs', { photo: foundPhoto, user: req.session.username})
 })
 
 
@@ -105,7 +105,7 @@ router.delete('/:id', async (req, res, next) => {
 		res.redirect('/photos')
 	}
 	catch(err){
-
+		next(err)
 
 	}
 })
